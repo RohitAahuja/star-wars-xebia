@@ -1,0 +1,19 @@
+<!-- nav -->
+<div>
+    <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser$ | async as currentUser">
+        <a class="navbar-brand" href="#">Hi, {{currentUser.name}}</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item nav-link" (click)="logout()">Logout</li>
+        </ul>
+    </nav>
+
+    <!-- main app container -->
+
+    <router-outlet></router-outlet>
+
+</div>
+<!-- <div class="jumbotron vertical-center" *ngIf="loading">
+    <div class="container text-center">
+        <span class="spinner-border"></span>
+    </div>
+</div> -->

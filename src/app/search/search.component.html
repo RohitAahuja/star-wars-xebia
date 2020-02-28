@@ -1,0 +1,38 @@
+<div class="jumbotron full-height">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 offset-sm-3">
+        <input class="form-control" type="text" appInputFilter placeholder="Search" [(ngModel)]="searchBy" (input)="changeToDiv()">
+      </div>
+    </div>
+    <div class="row mr-top-20" *ngIf="pagedItems && pagedItems.length">
+      <div class="col-sm-6 offset-sm-3">
+        <h4>Planets</h4>
+        <div class="list-group-item" *ngFor="let item of pagedItems" [ngStyle]="{'height': item.height + 'px' }">
+          {{item.name}}
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row justify-content-center">
+          <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link" (click)="setPage(1)">First</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+              <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+              <a class="page-link" (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+              <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
