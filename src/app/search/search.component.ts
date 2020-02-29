@@ -47,10 +47,11 @@ export class SearchComponent implements OnInit {
     }
   }
 
-  setPage(page: number) {
-    if (page < 1 || page > this.pager.totalPages) {
+  setPage(page: number, resetPagesCount?: number) {
+    if (page < 1 || page > (resetPagesCount || this.pager.totalPages)) {
       return;
     }
+
     this.pager = this.pagerService.getPager(this.filterPlanets.length, page);
     this.pagedItems = this.filterPlanets.slice(
       this.pager.startIndex,
@@ -79,7 +80,7 @@ export class SearchComponent implements OnInit {
         planet.height = 50;
       });
     }
-    this.setPage(1);
+    this.setPage(1, 1);
   }
 
   private getPlanets(url?: string) {

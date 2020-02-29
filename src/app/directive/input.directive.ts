@@ -19,7 +19,7 @@ export class InputFilterDirective {
             setInterval(() => {
               this.count = 0;
               this.caller.start();
-            }, 5 * 1000);
+            }, 60 * 1000);
           }
           if (this.count > 15) {
             this.caller.stop();
